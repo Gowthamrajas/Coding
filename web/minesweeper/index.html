@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Guard Minesweeper</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="toolbar">
+      <h1 class="title">Minesweeper-ish</h1>
+      <div class="controls">
+        <button id="reset-btn" type="button">New Game</button>
+        <div class="status">
+          <span>Mines:</span>
+          <span id="mine-count">0</span>
+        </div>
+        <div class="status">
+          <span>Flags:</span>
+          <span id="flag-count">0</span>
+        </div>
+      </div>
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+    </header>
+    <section id="board" class="board" role="grid" aria-label="Minesweeper board"></section>
+    <footer class="hint">
+      <p>Left click to reveal tiles. Right click (or long press) to toggle a flag.</p>
+    </footer>
+  </main>
+  <template id="tile-template">
+    <button class="tile" type="button" aria-live="polite"></button>
+  </template>
+  <script src="script.js" type="module"></script>
+</body>
+</html>
