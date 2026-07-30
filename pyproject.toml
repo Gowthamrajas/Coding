@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prompt-guard"
+version = "0.2.0"
+description = "Detect and mask sensitive data in LLM prompts before they leave your machine"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Prompt Guard Contributors" }]
+keywords = ["llm", "privacy", "security", "prompt", "pii", "redaction"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+prompt-guard = "prompt_guard.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/example/prompt-guard"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["prompt_guard*"]

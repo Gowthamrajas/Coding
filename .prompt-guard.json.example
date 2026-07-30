@@ -1,0 +1,9 @@
+{
+  "patterns": [
+    {
+      "label": "internal_project_code",
+      "pattern": "\\bPROJ-[0-9]{4,}\\b",
+      "ignore_case": false
+    }
+  ]
+}

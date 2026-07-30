@@ -38,19 +38,9 @@ class SensitiveInfoDetector:
     def default_patterns() -> Tuple[SensitivePattern, ...]:
         """Return a curated set of default detection rules."""
 
-        client_names = r"\b(?:Acme Corp|Globex|Initech|Umbrella|Hooli|Vehement Capital Partners)\b"
-        kpi_values = (
-            r"\b(?:revenue|ebitda|profit|conversion rate|churn rate|"
-            r"net promoter score|ARR|customer acquisition cost)\b[^\n]*?\d[\w$%,.-]*"
-        )
-        card_like = r"\b(?:\d[ -]?){13,16}\b"
-        email_like = r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"
-        return (
-            SensitivePattern("client_name", re.compile(client_names, re.IGNORECASE)),
-            SensitivePattern("kpi", re.compile(kpi_values, re.IGNORECASE)),
-            SensitivePattern("possible_account_number", re.compile(card_like)),
-            SensitivePattern("email", re.compile(email_like)),
-        )
+        from .patterns import resolve_patterns
+
+        return resolve_patterns()
 
     def scan(self, text: str) -> List[SensitiveMatch]:
         """Scan ``text`` for sensitive information and return the matches."""

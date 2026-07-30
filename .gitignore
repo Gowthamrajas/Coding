@@ -1,2 +1,7 @@
 __pycache__/
 *.py[cod]
+.vscode-test/
+vscode-extension/node_modules/
+vscode-extension/out/
+*.vsix
+.prompt-guard.json

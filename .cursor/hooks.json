@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeSubmitPrompt": [
+      {
+        "command": "python .cursor/hooks/run-prompt-guard.py",
+        "matcher": "UserPromptSubmit",
+        "failClosed": false,
+        "timeout": 10
+      }
+    ]
+  }
+}

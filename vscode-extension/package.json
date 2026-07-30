@@ -1,0 +1,123 @@
+{
+  "name": "prompt-guard",
+  "displayName": "Prompt Guard",
+  "description": "Detect and block sensitive data in AI prompts before it leaves your editor.",
+  "version": "0.2.0",
+  "publisher": "prompt-guard",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Linters"
+  ],
+  "keywords": [
+    "ai",
+    "cursor",
+    "privacy",
+    "security",
+    "prompt",
+    "pii"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "promptGuard.scanSelection",
+        "title": "Prompt Guard: Scan Selection"
+      },
+      {
+        "command": "promptGuard.sanitizeSelection",
+        "title": "Prompt Guard: Sanitize Selection"
+      },
+      {
+        "command": "promptGuard.sanitizeAndCopy",
+        "title": "Prompt Guard: Sanitize and Copy"
+      },
+      {
+        "command": "promptGuard.scanDocument",
+        "title": "Prompt Guard: Scan Active Document"
+      },
+      {
+        "command": "promptGuard.showPanel",
+        "title": "Prompt Guard: Show Findings Panel"
+      }
+    ],
+    "configuration": {
+      "title": "Prompt Guard",
+      "properties": {
+        "promptGuard.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Prompt Guard scanning and warnings."
+        },
+        "promptGuard.scanOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Scan the active document when it is saved."
+        },
+        "promptGuard.warnInStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show sensitive-data findings in the status bar."
+        },
+        "promptGuard.customPatterns": {
+          "type": "array",
+          "default": [],
+          "description": "Additional regex patterns to detect sensitive data.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "pattern": {
+                "type": "string"
+              },
+              "ignoreCase": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "required": [
+              "label",
+              "pattern"
+            ]
+          }
+        }
+      }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "promptGuard.scanSelection",
+          "when": "editorHasSelection",
+          "group": "promptGuard@1"
+        },
+        {
+          "command": "promptGuard.sanitizeSelection",
+          "when": "editorHasSelection",
+          "group": "promptGuard@2"
+        },
+        {
+          "command": "promptGuard.sanitizeAndCopy",
+          "when": "editorHasSelection",
+          "group": "promptGuard@3"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.3"
+  }
+}

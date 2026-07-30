@@ -1,3 +1,22 @@
+Metadata-Version: 2.4
+Name: prompt-guard
+Version: 0.2.0
+Summary: Detect and mask sensitive data in LLM prompts before they leave your machine
+Author: Prompt Guard Contributors
+License: MIT
+Project-URL: Homepage, https://github.com/example/prompt-guard
+Keywords: llm,privacy,security,prompt,pii,redaction
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Security
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+
 # Prompt Guard
 
 A privacy toolkit that keeps sensitive data out of AI prompts. It ships as:
